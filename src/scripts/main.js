@@ -1,10 +1,16 @@
 'use strict';
 
-const list = document.getElementsByClassName('tree')[0];
+const list = document.querySelector('.tree');
 
-list.addEventListener('click', visible);
-function visible() {
-  if (event.target.children[0] !== undefined) {
-    event.target.children[0].classList.toggle('visible');
+list.addEventListener('click', showToggle);
+
+function showToggle() {
+  console.dir(event.target);
+  if (event.target.tagName !== 'LI') {
+    return;
+  }
+  const elem = event.target.firstElementChild;
+  if (elem) {
+    elem.classList.toggle('visible');
   }
 }
